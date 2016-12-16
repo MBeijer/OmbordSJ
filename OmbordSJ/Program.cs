@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 
-
 namespace OmbordSJ
 {
 	class MainClass
@@ -11,7 +10,7 @@ namespace OmbordSJ
 			Console.WriteLine ( "Välkommen ombord!" );
 
 			while ( HotspotRunner.Ins.Running )
-				System.Threading.Thread.Sleep ( 1000 );
+				Thread.Sleep ( 1000 );
 		}
 	}
 }
