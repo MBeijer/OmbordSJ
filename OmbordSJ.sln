@@ -14,4 +14,41 @@ Global
 		{63CD8EE0-BC51-40EA-9269-D99E26288DF4}.Release|x86.ActiveCfg = Release|x86
 		{63CD8EE0-BC51-40EA-9269-D99E26288DF4}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = Hierarchical
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = application/xml
+		$2.FileWidth = 120
+		$2.TabsToSpaces = False
+		$2.inheritsScope = text/plain
+		$0.CSharpFormattingPolicy = $3
+		$3.NewLinesForBracesInProperties = True
+		$3.NewLinesForBracesInAccessors = True
+		$3.NewLinesForBracesInAnonymousMethods = True
+		$3.NewLinesForBracesInControlBlocks = True
+		$3.NewLinesForBracesInAnonymousTypes = True
+		$3.NewLinesForBracesInObjectCollectionArrayInitializers = True
+		$3.NewLinesForBracesInLambdaExpressionBody = True
+		$3.NewLineForElse = True
+		$3.NewLineForCatch = True
+		$3.NewLineForFinally = True
+		$3.SpaceWithinMethodDeclarationParenthesis = True
+		$3.SpaceWithinMethodCallParentheses = True
+		$3.SpaceWithinExpressionParentheses = True
+		$3.SpaceWithinOtherParentheses = True
+		$3.SpaceBeforeOpenSquareBracket = False
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/x-csharp
+		$3.scope = text/x-csharp
+		$0.XmlFormattingPolicy = $4
+		$4.inheritsSet = Mono
+		$4.scope = application/xml
+		$4.inheritsScope = application/xml
+		$0.VersionControlPolicy = $5
+		$5.inheritsSet = Mono
+	EndGlobalSection
 EndGlobal
