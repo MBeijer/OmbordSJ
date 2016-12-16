@@ -1,9 +1,9 @@
 ﻿using System;
 
 
-namespace OmbordSJ
+namespace OmbordSJ.Api
 {
-	public class HotspotSystem : ApiCallBase
+	public class System : CallBase
 	{
 		public int Id
 		{
@@ -17,7 +17,7 @@ namespace OmbordSJ
 		}
 
 
-		public HotspotSystem () : base ( "system" )
+		public System () : base ( "system" )
 		{
 
 
@@ -25,7 +25,7 @@ namespace OmbordSJ
 		}
 
 
-		~HotspotSystem ()
+		~System ()
 		{
 
 		}

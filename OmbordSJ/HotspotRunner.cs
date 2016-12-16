@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using OmbordSJ.Api;
 
 namespace OmbordSJ
 {
@@ -7,11 +8,11 @@ namespace OmbordSJ
 	{
 
 		private static HotspotRunner _instance = null;
-		private HotspotUser _user = null;
-		private HotspotSystem _system = null;
-		private HotspotTrip _trip = null;
+		private Api.User _user = null;
+		private Api.System _system = null;
+		private Api.Trip _trip = null;
 
-		public HotspotUser User
+		public Api.User User
 		{
 			get
 			{
@@ -19,7 +20,7 @@ namespace OmbordSJ
 			}
 		}
 
-		public HotspotSystem System
+		public Api.System System
 		{
 			get
 			{
@@ -27,7 +28,7 @@ namespace OmbordSJ
 			}
 		}
 
-		public HotspotTrip Trip
+		public Api.Trip Trip
 		{
 			get
 			{
@@ -49,16 +50,15 @@ namespace OmbordSJ
 
 		private HotspotRunner ()
 		{
-			this._user = new HotspotUser ();
-			this._system = new HotspotSystem ();
-			this._trip = new HotspotTrip ( this.System.Id.ToString () );
+			this._user = new Api.User ();
+			this._system = new Api.System ();
+			this._trip = new Api.Trip ( this.System.Id.ToString () );
 		}
 
 		public bool Running
 		{
 			get
 			{
-				// http://services.ombord.sj.se/traffic/Trip
 				this.User.Update ();
 				this.Trip.Update ();
 				var next = this.Trip.Next;
@@ -78,6 +78,7 @@ namespace OmbordSJ
 
 				if ( ( this.User.DataTotalLimit - this.User.DataTotalUsed ) <= 0 )
 				{
+					/* Check https://github.com/MBeijer/ChangeMAConOSX for chgmac application */
 					Process test = Process.Start ( "/Users/marlon/bin/chgmac.app/Contents/MacOS/chgmac" );
 					test.WaitForExit ();
 

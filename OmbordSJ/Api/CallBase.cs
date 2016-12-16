@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Text;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace OmbordSJ
+namespace OmbordSJ.Api
 {
-	public class ApiCallBase
+	public class CallBase
 	{
 
 		private HttpWebRequest _request = null;
@@ -39,7 +40,7 @@ namespace OmbordSJ
 			}
 		}
 
-		public ApiCallBase ( string apiCall, string kind = "api" )
+		public CallBase ( string apiCall, string kind = "api" )
 		{
 			this._apiCall = apiCall;
 			this._kind = kind;
@@ -61,7 +62,7 @@ namespace OmbordSJ
 			{
 
 				_responseStream = this.Response.GetResponseStream ();
-				_readerStream = new StreamReader ( _responseStream, System.Text.Encoding.GetEncoding ( "utf-8" ) );
+				_readerStream = new StreamReader ( _responseStream, Encoding.GetEncoding ( "utf-8" ) );
 
 				string json = _readerStream.ReadToEnd ();
 				_readerStream.Close ();
@@ -78,7 +79,7 @@ namespace OmbordSJ
 
 		}
 
-		~ApiCallBase ()
+		~CallBase ()
 		{
 		}
 	}

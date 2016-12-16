@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace OmbordSJ
+namespace OmbordSJ.Api
 {
-	public class HotspotTrip : ApiCallBase
+	public class Trip : CallBase
 	{
 		public int TrainNumber
 		{
@@ -67,7 +67,7 @@ namespace OmbordSJ
 			}
 		}
 
-		public HotspotTrip ( string id ) : base ( id, "system" )
+		public Trip ( string id ) : base ( id, "system" )
 		{
 
 
@@ -75,7 +75,7 @@ namespace OmbordSJ
 		}
 
 
-		~HotspotTrip ()
+		~Trip ()
 		{
 
 		}

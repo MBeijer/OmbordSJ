@@ -1,9 +1,9 @@
 ﻿using System;
 
 
-namespace OmbordSJ
+namespace OmbordSJ.Api
 {
-	public class HotspotUser : ApiCallBase
+	public class User : CallBase
 	{
 		public int DataTotalLimit
 		{
@@ -70,7 +70,7 @@ namespace OmbordSJ
 			}
 		}
 
-		public HotspotUser () : base ( "user" )
+		public User () : base ( "user" )
 		{
 
 
@@ -78,7 +78,7 @@ namespace OmbordSJ
 		}
 
 
-		~HotspotUser ()
+		~User ()
 		{
 
 		}
