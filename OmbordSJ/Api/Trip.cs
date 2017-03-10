@@ -11,7 +11,7 @@ namespace OmbordSJ.Api
 				if ( this._json == null )
 					return -1;
 				else
-					return int.Parse ( this._json["AnnouncedTrainNumber"].ToString () );
+					return ( this._json["AnnouncedTrainNumber"].ToString () != string.Empty ) ? int.Parse ( this._json["AnnouncedTrainNumber"].ToString () ) : -1;
 			}
 		}
 
