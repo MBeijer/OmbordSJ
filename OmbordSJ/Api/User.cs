@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 
 namespace OmbordSJ.Api
@@ -48,14 +49,14 @@ namespace OmbordSJ.Api
 			}
 		}
 
-		public string Ip
+		public IPAddress Ip
 		{
 			get
 			{
 				if ( this._json == null )
-					return "";
+					return null;
 				else
-					return this._json["ip"].ToString ();
+					return IPAddress.Parse ( this._json["ip"].ToString () );
 			}
 		}
 
@@ -70,6 +71,11 @@ namespace OmbordSJ.Api
 			}
 		}
 
+		internal void ResetData ()
+		{
+			this._json = null;
+		}
+
 		public User () : base ( "user" )
 		{
 
@@ -82,5 +88,6 @@ namespace OmbordSJ.Api
 		{
 
 		}
+
 	}
 }

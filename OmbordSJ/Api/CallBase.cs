@@ -48,16 +48,21 @@ namespace OmbordSJ.Api
 			this.Update ();
 		}
 
-		public void Update ()
+		public bool Update ()
 		{
 			string apiCallUrl = "";
 			if ( this._kind == "api" )
 				apiCallUrl = "http://www.ombord.info/api/jsonp/" + this._apiCall + "/?_=" + this.UnixTime;
-			else
+			else if ( this._kind == "system" )
 				apiCallUrl = "http://services.ombord.sj.se/traffic/Trip?systemid=" + this._apiCall;
+			else if ( this._kind == "login" )
+				apiCallUrl = "https://www.ombord.info/hotspot/hotspot.cgi?realm=sj_mio_standard_55&method=classcheck&_=" + this.UnixTime;
 
 			_request = (HttpWebRequest)WebRequest.Create ( apiCallUrl );
-
+			_request.Timeout = 10000;
+			_request.Referer = "http://ombord.sj.se/";
+			_request.Host = "www.ombord.info";
+			_request.Accept = "*/*";
 			if ( this.Response != null )
 			{
 
@@ -75,8 +80,9 @@ namespace OmbordSJ.Api
 
 
 				this._json = JObject.Parse ( json );
+				return true;
 			}
-
+			return false;
 		}
 
 		~CallBase ()

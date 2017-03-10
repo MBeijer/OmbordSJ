@@ -33,6 +33,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -42,6 +43,7 @@
     <Compile Include="Api\System.cs" />
     <Compile Include="Api\Trip.cs" />
     <Compile Include="Api\User.cs" />
+    <Compile Include="Api\Login.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
