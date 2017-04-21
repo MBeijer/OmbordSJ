@@ -61,7 +61,7 @@ namespace OmbordSJ.Api
 			_request = (HttpWebRequest)WebRequest.Create ( apiCallUrl );
 			_request.Timeout = 10000;
 			_request.Referer = "http://ombord.sj.se/";
-			_request.Host = "www.ombord.info";
+			_request.Host = "services.ombord.sj.se";
 			_request.Accept = "*/*";
 			if ( this.Response != null )
 			{
