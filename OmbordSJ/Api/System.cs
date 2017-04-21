@@ -12,7 +12,7 @@ namespace OmbordSJ.Api
 				if ( this._json == null )
 					return -1;
 				else
-					return int.Parse ( this._json["system"].ToString () );
+					return int.Parse ( this._json["system_id"].ToString () );
 			}
 		}
 
