@@ -56,22 +56,19 @@ namespace OmbordSJ.Api
 			else if ( this._kind == "system" )
 				apiCallUrl = "http://services.ombord.sj.se/traffic/Trip?systemid=" + this._apiCall;
 			else if ( this._kind == "login" )
-				apiCallUrl = "https://www.ombord.info/hotspot/hotspot.cgi?realm=sj_mio_standard_55&method=classcheck&_=" + this.UnixTime;
+				apiCallUrl = "https://www.ombord.info/hotspot/hotspot.cgi?method=login&password=&username=&callback=_jsonp_1&_=" + this.UnixTime;
 
-			_request = (HttpWebRequest)WebRequest.Create ( apiCallUrl );
-			_request.Timeout = 10000;
-			_request.Referer = "http://ombord.sj.se/";
-			_request.Host = "services.ombord.sj.se";
-			_request.Accept = "*/*";
+			this.CreateWebRequestAndSetHeaders ( apiCallUrl );
+
 			if ( this.Response != null )
 			{
 
-				_responseStream = this.Response.GetResponseStream ();
-				_readerStream = new StreamReader ( _responseStream, Encoding.GetEncoding ( "utf-8" ) );
+				this._responseStream = this.Response.GetResponseStream ();
+				this._readerStream = new StreamReader ( _responseStream, Encoding.GetEncoding ( "utf-8" ) );
 
-				string json = _readerStream.ReadToEnd ();
-				_readerStream.Close ();
-				_responseStream.Close ();
+				string json = this._readerStream.ReadToEnd ();
+				this._readerStream.Close ();
+				this._responseStream.Close ();
 
 				json = json
 					.Replace ( "(", "" )
@@ -83,6 +80,22 @@ namespace OmbordSJ.Api
 				return true;
 			}
 			return false;
+		}
+
+		private void CreateWebRequestAndSetHeaders ( string apiCallUrl )
+		{
+			this._request = (HttpWebRequest)WebRequest.Create ( apiCallUrl );
+			this._request.Timeout = 10000;
+			this._request.Referer = "http://ombord.sj.se/";
+
+			if ( this._kind == "login" )
+				this._request.Host = "www.ombord.info";
+			else
+				this._request.Host = "services.ombord.sj.se";
+
+			this._request.Accept = "*/*";
+			this._request.Headers.Add ( "DNT", "1" );
+			this._request.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36";
 		}
 
 		~CallBase ()
