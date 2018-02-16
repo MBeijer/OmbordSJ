@@ -69,14 +69,16 @@ namespace OmbordSJ.Api
 				string json = this._readerStream.ReadToEnd ();
 				this._readerStream.Close ();
 				this._responseStream.Close ();
+				if ( this._kind != "login" )
+				{
+					json = json
+						.Replace ( "(", "" )
+						.Replace ( ");", "" )
+						.Replace ( "\\x", "\\u00" );
 
-				json = json
-					.Replace ( "(", "" )
-					.Replace ( ");", "" )
-					.Replace ( "\\x", "\\u00" );
 
-
-				this._json = JObject.Parse ( json );
+					this._json = JObject.Parse ( json );
+				}
 				return true;
 			}
 			return false;
