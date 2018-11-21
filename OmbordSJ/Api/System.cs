@@ -1,33 +1,9 @@
-﻿using System;
-
-
-namespace OmbordSJ.Api
+﻿namespace OmbordSJ.Api
 {
 	public class System : CallBase
 	{
-		public int Id
-		{
-			get
-			{
-				if ( this._json == null )
-					return -1;
-				else
-					return int.Parse ( this._json["system_id"].ToString () );
-			}
-		}
+		public int Id => Json == null ? -1 : int.Parse( Json["system_id"].ToString() );
 
-
-		public System () : base ( "system" )
-		{
-
-
-
-		}
-
-
-		~System ()
-		{
-
-		}
+		public System() : base( "system" ) { }
 	}
 }
