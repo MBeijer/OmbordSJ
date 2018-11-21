@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace OmbordSJ
 {
-	class MainClass
+	internal static class MainClass
 	{
 		public static void Main ( string[] args )
 		{
